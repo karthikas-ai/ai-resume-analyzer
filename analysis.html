@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title %}Analysis Results — ResumeIQ{% endblock %}
+{% block content %}
+<section class="container py-4">
+
+  <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+    <div>
+      <span class="eyebrow">Analysis for {{ resume.filename }}</span>
+      <h2 class="mb-0">{{ data.predicted_role if data.predicted_role is defined else analysis.predicted_role }}</h2>
+    </div>
+    <a href="{{ url_for('main.download_report', analysis_id=analysis.id) }}" class="btn btn-accent-lg">⬇ Download PDF Report</a>
+  </div>
+
+  {% if not granite_configured %}
+  <div class="alert alert-info small">AI suggestions below are from ResumeIQ's local fallback engine since IBM watsonx.ai credentials aren't configured in <code>.env</code>.</div>
+  {% endif %}
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-6 col-lg-3">
+      <div class="score-block">
+        <div class="score-ring-lg" style="--pct:{{ analysis.overall_score }}"><span>{{ analysis.overall_score }}</span></div>
+        <p class="score-block-label">Overall Score</p>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+      <div class="score-block">
+        <div class="score-ring-lg ring-teal" style="--pct:{{ analysis.ats_score }}"><span>{{ analysis.ats_score }}</span></div>
+        <p class="score-block-label">ATS Compatibility</p>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="chart-card h-100">
+        <p class="fw-semibold mb-2">Score Breakdown</p>
+        <canvas id="scoreChart" height="120"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="panel-card h-100">
+        <h5>✅ Matched Skills ({{ data.matched_skills|length }})</h5>
+        {% if data.matched_skills %}
+          <div class="skill-badges">
+            {% for s in data.matched_skills %}<span class="badge-skill badge-skill-good">{{ s.title() }}</span>{% endfor %}
+          </div>
+        {% else %}
+          <p class="text-muted">No known skills detected. Consider adding a dedicated Skills section.</p>
+        {% endif %}
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="panel-card h-100">
+        <h5>⚠️ Missing Skills for {{ analysis.predicted_role }}</h5>
+        {% if data.missing_skills %}
+          <div class="skill-badges">
+            {% for s in data.missing_skills %}<span class="badge-skill badge-skill-missing">{{ s.title() }}</span>{% endfor %}
+          </div>
+        {% else %}
+          <p class="text-muted">Great coverage — no major missing skills detected!</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="panel-card h-100">
+        <h5>🔍 ATS Compatibility Issues</h5>
+        <ul class="issue-list">
+          {% for issue in data.ats_issues %}<li>{{ issue }}</li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="panel-card h-100">
+        <h5>📚 Learning Recommendations</h5>
+        {% if data.learning_recommendations %}
+        <div class="table-responsive">
+          <table class="table table-sm mb-0">
+            <thead><tr><th>Skill</th><th>Resource</th></tr></thead>
+            <tbody>
+              {% for rec in data.learning_recommendations %}
+              <tr><td class="fw-semibold">{{ rec.skill }}</td><td>{{ rec.resource }}</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        {% else %}
+        <p class="text-muted">No specific recommendations — you're well covered!</p>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="panel-card">
+        <h5>🤖 AI-Generated Improvement Suggestions</h5>
+        <div class="ai-suggestion-box">{{ analysis.ai_suggestions|replace('\n', '<br>')|safe }}</div>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="panel-card">
+        <h5>💬 Practice Interview Questions</h5>
+        <ol class="interview-list">
+          {% for q in data.interview_questions %}<li>{{ q }}</li>{% endfor %}
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5 mb-3">
+    <a href="{{ url_for('main.upload') }}" class="btn btn-outline-accent me-2">Analyze Another Resume</a>
+    <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-accent">Back to Dashboard</a>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<script>
+const ctx = document.getElementById('scoreChart');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Overall', 'ATS', 'Skill Coverage', 'Structure'],
+    datasets: [{
+      label: 'Score',
+      data: [
+        {{ analysis.overall_score }},
+        {{ analysis.ats_score }},
+        {{ (data.matched_skills|length * 8) if (data.matched_skills|length * 8) < 100 else 100 }},
+        {{ 100 - (data.ats_issues|length * 12) if (100 - (data.ats_issues|length * 12)) > 0 else 10 }}
+      ],
+      backgroundColor: ['#4F46E5', '#0D9488', '#F59E0B', '#EC4899'],
+      borderRadius: 8,
+    }]
+  },
+  options: {
+    scales: { y: { beginAtZero: true, max: 100 } },
+    plugins: { legend: { display: false } }
+  }
+});
+</script>
+{% endblock %}

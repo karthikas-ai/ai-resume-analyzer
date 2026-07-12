@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Error {{ code }} — ResumeIQ{% endblock %}
+{% block content %}
+<section class="container py-5 text-center">
+  <h1 class="display-1 fw-bold text-accent">{{ code }}</h1>
+  <p class="lead">{{ message }}</p>
+  <a href="{{ url_for('main.index') }}" class="btn btn-accent-lg mt-3">Go Home</a>
+</section>
+{% endblock %}

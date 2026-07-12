@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}ResumeIQ — AI Resume Analyzer & Career Coach{% endblock %}
+{% block content %}
+
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6">
+        <span class="eyebrow">IBM watsonx.ai Granite · Powered Coaching</span>
+        <h1 class="hero-title">Know exactly why your resume<br> isn't landing interviews.</h1>
+        <p class="hero-sub">
+          Upload your resume and get an instant, data-backed breakdown: an ATS
+          compatibility score, the skills you're missing for your target role,
+          a personalized learning path, and AI-generated interview questions —
+          all in under a minute.
+        </p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          {% if current_user.is_authenticated %}
+            <a href="{{ url_for('main.upload') }}" class="btn btn-accent-lg">Analyze My Resume</a>
+          {% else %}
+            <a href="{{ url_for('auth.register') }}" class="btn btn-accent-lg">Start Free Analysis</a>
+            <a href="{{ url_for('auth.login') }}" class="btn btn-outline-lg">I Already Have an Account</a>
+          {% endif %}
+        </div>
+        <div class="hero-stats mt-5">
+          <div><strong>0-100</strong><span>Composite Score</span></div>
+          <div><strong>8+</strong><span>Career Roles Matched</span></div>
+          <div><strong>PDF/DOCX</strong><span>Formats Supported</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-card-stack">
+          <div class="score-card floaty">
+            <div class="score-ring" style="--pct:78">
+              <span>78</span>
+            </div>
+            <div>
+              <p class="score-card-title">Overall Resume Score</p>
+              <p class="score-card-sub">Full Stack Developer match</p>
+            </div>
+          </div>
+          <div class="mini-card floaty floaty-2">
+            <span class="dot dot-good"></span> ATS Compatible — 84%
+          </div>
+          <div class="mini-card floaty floaty-3">
+            <span class="dot dot-warn"></span> 3 Missing Skills Detected
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt py-5">
+  <div class="container py-4">
+    <h2 class="section-title text-center">Everything a career coach checks — automated</h2>
+    <p class="section-sub text-center mx-auto" style="max-width:640px">
+      Built for the IBM SkillsBuild final submission, combining rule-based
+      resume science with IBM Granite's generative language capabilities.
+    </p>
+    <div class="row g-4 mt-3">
+      {% set features = [
+        ("📄", "Smart Text Extraction", "Accurately parses both PDF and DOCX resumes, including tables and multi-column layouts."),
+        ("🎯", "ATS Compatibility Check", "Flags formatting and structural issues that could get your resume rejected by automated screeners."),
+        ("🧠", "Skill Gap Detection", "Compares your skills against 8 in-demand career tracks and shows exactly what's missing."),
+        ("🚀", "Career Role Prediction", "Identifies your best-fit role based on the skills already present in your resume."),
+        ("📚", "Learning Recommendations", "Curated courses mapped directly to your missing skills."),
+        ("💬", "AI Interview Prep", "Granite-generated interview questions tailored to your predicted role."),
+      ] %}
+      {% for icon, title, desc in features %}
+      <div class="col-md-6 col-lg-4">
+        <div class="feature-card">
+          <div class="feature-icon">{{ icon }}</div>
+          <h5>{{ title }}</h5>
+          <p>{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="py-5">
+  <div class="container py-4">
+    <div class="cta-banner">
+      <div>
+        <h3 class="mb-1">Ready to see your score?</h3>
+        <p class="mb-0 text-muted">It takes less than a minute — no credit card, no catch.</p>
+      </div>
+      <a href="{{ url_for('auth.register') if not current_user.is_authenticated else url_for('main.upload') }}" class="btn btn-accent-lg">Get My Free Analysis</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

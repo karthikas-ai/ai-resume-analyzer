@@ -1,0 +1,33 @@
+Rahul Verma
+rahul.verma@example.com | +91-9123456780 | linkedin.com/in/rahulverma
+
+OBJECTIVE
+Aspiring data scientist with strong foundations in Python, statistics, and
+machine learning, seeking an entry-level role applying predictive modeling to
+real-world business problems.
+
+TECHNICAL SKILLS
+Python, Pandas, NumPy, Scikit-learn, Machine Learning, Statistics, SQL,
+Data Visualization, Matplotlib, Tableau
+
+EDUCATION
+B.E. Computer Science and Engineering (AI & ML), XYZ Institute of Technology
+2022 - 2026, CGPA: 8.7/10
+
+PROJECTS
+- Customer Churn Prediction: Built a machine learning pipeline using
+  Scikit-learn achieving 89% accuracy on customer churn prediction, with
+  feature engineering and cross-validation.
+- Sales Forecasting Dashboard: Created an interactive Tableau dashboard
+  visualizing sales trends across regions using SQL-derived datasets.
+- Sentiment Analysis Tool: Implemented an NLP pipeline in Python to classify
+  product reviews as positive, negative, or neutral.
+
+EXPERIENCE
+Data Analytics Intern, InsightWorks Analytics (Dec 2024 - Feb 2025)
+- Cleaned and analyzed datasets of 50,000+ records using Pandas and SQL.
+- Presented insights to stakeholders using Tableau dashboards.
+
+CERTIFICATIONS
+- IBM Data Science Professional Certificate
+- Machine Learning by Andrew Ng, Coursera

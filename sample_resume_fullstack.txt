@@ -1,0 +1,32 @@
+Ananya Sharma
+Email: ananya.sharma@example.com | Phone: +91-9876543210 | LinkedIn: linkedin.com/in/ananyasharma
+
+SUMMARY
+Final-year Computer Science student with hands-on experience building full stack
+web applications using React, Node.js, and MongoDB. Passionate about clean UI and
+scalable backend architecture.
+
+SKILLS
+JavaScript, React, Node.js, Express, MongoDB, HTML, CSS, Git, REST API, Bootstrap,
+SQL, Python
+
+EDUCATION
+B.Tech in Computer Science Engineering, ABC University, 2022-2026
+CGPA: 8.4/10
+
+PROJECTS
+- Campus Marketplace: Built a full stack marketplace app using React and Express,
+  with JWT authentication and a MongoDB backend. Deployed on Render.
+- Task Manager API: Designed a REST API with Node.js and Express supporting
+  CRUD operations and role-based access control.
+- Portfolio Website: Built and deployed a personal portfolio using HTML, CSS,
+  and vanilla JavaScript.
+
+EXPERIENCE
+Web Development Intern, TechNova Solutions (Jun 2025 - Aug 2025)
+- Developed reusable React components, reducing frontend development time by 20%.
+- Collaborated with a team of 4 developers using Git and Agile methodology.
+
+CERTIFICATIONS
+- Full Stack Web Development, Coursera
+- Git and GitHub Essentials, IBM SkillsBuild
