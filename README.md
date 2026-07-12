@@ -9,6 +9,59 @@ personalized improvement suggestions and interview questions.
 
 ---
 
+# 📸 Application Screenshots
+
+## 🏠 Home Page
+
+The landing page introduces ResumeIQ, highlighting AI-powered resume analysis, ATS compatibility scoring, career prediction, and IBM watsonx.ai integration.
+
+![Home Page](screenshots/home-page.png)
+
+---
+
+## 👤 User Registration
+
+Users can create a secure account using their name, email address, and password. Passwords are securely hashed before being stored.
+
+![Registration Page](screenshots/register-page.png)
+
+---
+
+## 📊 User Dashboard
+
+After logging in, users are welcomed with a personalized dashboard where they can upload resumes, view previous analyses, and track ATS scores.
+
+![Dashboard](screenshots/dashboard-page.png)
+
+---
+
+## 📄 Resume Upload
+
+Users can upload PDF or DOCX resumes for analysis. The application extracts resume content and starts the AI-powered evaluation.
+
+![Resume Upload](screenshots/upload-page.png)
+
+---
+
+## 🤖 AI Resume Analysis
+
+The system analyzes the uploaded resume and provides:
+
+- Overall Resume Score
+- ATS Compatibility Score
+- Predicted Career Role
+- Matched Skills
+- Missing Skills
+- Learning Recommendations
+- AI Improvement Suggestions
+- Practice Interview Questions
+- Downloadable PDF Report
+
+Powered by *IBM watsonx.ai Granite Foundation Model*.
+
+![Analysis Results](screenshots/analysis-page.png)
+
+
 ## 📌 Table of Contents
 
 1. [Features](#-features)
