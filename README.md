@@ -15,15 +15,15 @@ personalized improvement suggestions and interview questions.
 
 The landing page introduces ResumeIQ, highlighting AI-powered resume analysis, ATS compatibility scoring, career prediction, and IBM watsonx.ai integration.
 
-![Home Page](screenshots/home-page.png)
+![Home Page](screenshots/home page.png)
 
 ---
 
-## 👤 User Registration
+## 👤 User Login Page
 
 Users can create a secure account using their name, email address, and password. Passwords are securely hashed before being stored.
 
-![Registration Page](screenshots/register-page.png)
+![User Login Page](screenshots/User Login Page .png)
 
 ---
 
@@ -31,7 +31,7 @@ Users can create a secure account using their name, email address, and password.
 
 After logging in, users are welcomed with a personalized dashboard where they can upload resumes, view previous analyses, and track ATS scores.
 
-![Dashboard](screenshots/dashboard-page.png)
+![Dashboard](screenshots/dashboard page.png)
 
 ---
 
@@ -39,7 +39,7 @@ After logging in, users are welcomed with a personalized dashboard where they ca
 
 Users can upload PDF or DOCX resumes for analysis. The application extracts resume content and starts the AI-powered evaluation.
 
-![Resume Upload](screenshots/upload-page.png)
+![Resume Upload](screenshots/upload page.png)
 
 ---
 
@@ -59,7 +59,7 @@ The system analyzes the uploaded resume and provides:
 
 Powered by *IBM watsonx.ai Granite Foundation Model*.
 
-![Analysis Results](screenshots/analysis-page.png)
+![Analysis Results](screenshots/analysis page.png)
 
 
 ## 📌 Table of Contents
